@@ -3,6 +3,7 @@
  * ClinicDesk - SpecializationModel
  */
 
+
 require_once __DIR__ . '/BaseModel.php';
 
 class SpecializationModel extends BaseModel

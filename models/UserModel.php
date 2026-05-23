@@ -1,7 +1,7 @@
 <?php
 /**
  * ClinicDesk - UserModel
- * Handles all database operations for the users table.
+ * Handles all database operations for the users table
  */
 
 require_once __DIR__ . '/BaseModel.php';

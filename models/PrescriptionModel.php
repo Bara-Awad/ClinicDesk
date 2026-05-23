@@ -98,7 +98,7 @@ class PrescriptionModel extends BaseModel
     }
 
     /**
-     * Find a prescription by appointment ID and verify the requesting doctor owns it.
+     * Find a prescription by appointment ID and verify the requesting doctor owns it
      */
     public function findForDoctor(int $apptId, int $doctorId): ?array
     {
