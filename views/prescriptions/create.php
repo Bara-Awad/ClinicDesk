@@ -31,8 +31,8 @@ require_once __DIR__ . '/../partials/sidebar.php';
       <!-- Appointment summary -->
       <div class="alert alert-light border mb-3">
         <strong><i class="fas fa-calendar-check mr-2 text-success"></i>Appointment #<?= (int)$appointment['id'] ?></strong>
-        &mdash; Patient: <strong><?= e($appointment['patient_name']) ?></strong>
-        &mdash; Date: <?= e(formatDate($appointment['appt_date'])) ?> at <?= e(formatTime($appointment['appt_time'])) ?>
+        &mdash; Patient: <strong><?= sanitize($appointment['patient_name']) ?></strong>
+        &mdash; Date: <?= sanitize(formatDate($appointment['appt_date'])) ?> at <?= sanitize(formatTime($appointment['appt_time'])) ?>
       </div>
 
       <div class="row justify-content-center">
@@ -50,19 +50,19 @@ require_once __DIR__ . '/../partials/sidebar.php';
                 <div class="form-group">
                   <label>Diagnosis <span class="text-danger">*</span></label>
                   <textarea name="diagnosis" class="form-control" rows="3"
-                            placeholder="Patient diagnosis…" required><?= e($_POST['diagnosis'] ?? '') ?></textarea>
+                            placeholder="Patient diagnosis…" required><?= sanitize($_POST['diagnosis'] ?? '') ?></textarea>
                 </div>
 
                 <div class="form-group">
                   <label>Medications <span class="text-danger">*</span></label>
                   <textarea name="medications" class="form-control" rows="4"
-                            placeholder="List medications, dosage, and instructions…" required><?= e($_POST['medications'] ?? '') ?></textarea>
+                            placeholder="List medications, dosage, and instructions…" required><?= sanitize($_POST['medications'] ?? '') ?></textarea>
                 </div>
 
                 <div class="form-group">
                   <label>Additional Notes</label>
                   <textarea name="notes" class="form-control" rows="2"
-                            placeholder="Follow-up instructions, diet, etc."><?= e($_POST['notes'] ?? '') ?></textarea>
+                            placeholder="Follow-up instructions, diet, etc."><?= sanitize($_POST['notes'] ?? '') ?></textarea>
                 </div>
 
                 <div class="form-group">

@@ -139,7 +139,7 @@ class UserController
             ? $this->doctors->findByUserId($id)
             : null;
 
-        $pageTitle = 'Edit User: ' . e($targetUser['name']);
+        $pageTitle = 'Edit User: ' . sanitize($targetUser['name']);
         require_once __DIR__ . '/../views/users/edit.php';
     }
 

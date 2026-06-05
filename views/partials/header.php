@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?= e($pageTitle ?? APP_NAME) ?> | <?= e(APP_NAME) ?></title>
+  <title><?= sanitize($pageTitle ?? APP_NAME) ?> | <?= sanitize(APP_NAME) ?></title>
 
   <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">

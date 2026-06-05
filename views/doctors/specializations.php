@@ -71,11 +71,11 @@ require_once __DIR__ . '/../partials/sidebar.php';
                     <?php foreach ($specsList as $s): ?>
                     <tr>
                       <td><?= (int)$s['id'] ?></td>
-                      <td><?= e($s['name']) ?></td>
+                      <td><?= sanitize($s['name']) ?></td>
                       <td>
                         <form method="POST" action="index.php?page=doctors&action=delete_specialization"
                               class="d-inline"
-                              onsubmit="return confirm('Delete specialization \'<?= e(addslashes($s['name'])) ?>\'?')">
+                              onsubmit="return confirm('Delete specialization \'<?= sanitize(addslashes($s['name'])) ?>\'?')">
                           <?= \CSRF::field() ?>
                           <input type="hidden" name="spec_id" value="<?= (int)$s['id'] ?>">
                           <button type="submit" class="btn btn-xs btn-outline-danger">

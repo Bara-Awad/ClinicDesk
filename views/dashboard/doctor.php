@@ -97,12 +97,12 @@ require_once __DIR__ . '/../partials/sidebar.php';
                   <tbody>
                     <?php foreach ($stats['today'] as $a): ?>
                     <tr>
-                      <td><strong><?= e(formatTime($a['appt_time'])) ?></strong></td>
-                      <td><?= e($a['patient_name']) ?></td>
-                      <td><small><?= e(truncate($a['reason'] ?? '—', 50)) ?></small></td>
+                      <td><strong><?= sanitize(formatTime($a['appt_time'])) ?></strong></td>
+                      <td><?= sanitize($a['patient_name']) ?></td>
+                      <td><small><?= sanitize(truncate($a['reason'] ?? '—', 50)) ?></small></td>
                       <td>
                         <span class="badge <?= statusBadge($a['status']) ?>">
-                          <?= e(ucfirst($a['status'])) ?>
+                          <?= sanitize(ucfirst($a['status'])) ?>
                         </span>
                       </td>
                       <td>

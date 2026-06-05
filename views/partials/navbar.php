@@ -26,7 +26,7 @@ $currentUser = Auth::currentUser();
         $currentUser['role'] === 'admin'   ? 'danger' :
         ($currentUser['role'] === 'doctor' ? 'info'   : 'success')
       ?> p-2 text-uppercase">
-        <?= e($currentUser['role']) ?>
+        <?= sanitize($currentUser['role']) ?>
       </span>
     </li>
 
@@ -34,12 +34,12 @@ $currentUser = Auth::currentUser();
     <li class="nav-item dropdown">
       <a class="nav-link" data-toggle="dropdown" href="#">
         <i class="far fa-user-circle fa-lg mr-1"></i>
-        <span class="d-none d-sm-inline"><?= e($currentUser['name']) ?></span>
+        <span class="d-none d-sm-inline"><?= sanitize($currentUser['name']) ?></span>
         <i class="fas fa-caret-down ml-1"></i>
       </a>
       <div class="dropdown-menu dropdown-menu-right shadow-sm">
         <span class="dropdown-item-text text-muted small">
-          <?= e($currentUser['email']) ?>
+          <?= sanitize($currentUser['email']) ?>
         </span>
         <div class="dropdown-divider"></div>
         <a href="index.php?page=profile" class="dropdown-item">

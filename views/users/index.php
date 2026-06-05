@@ -49,7 +49,7 @@ require_once __DIR__ . '/../partials/sidebar.php';
             <div class="form-group mr-2 mb-2">
               <input type="text" name="search" class="form-control form-control-sm"
                      placeholder="Search name or email…"
-                     value="<?= e($_GET['search'] ?? '') ?>">
+                     value="<?= sanitize($_GET['search'] ?? '') ?>">
             </div>
             <button type="submit" class="btn btn-sm btn-primary mr-2 mb-2">
               <i class="fas fa-search mr-1"></i> Search
@@ -94,19 +94,19 @@ require_once __DIR__ . '/../partials/sidebar.php';
                            style="width:34px;height:34px;font-size:.85rem;background:#4e73df">
                         <?= strtoupper(mb_substr($u['name'], 0, 1)) ?>
                       </div>
-                      <span><?= e($u['name']) ?></span>
+                      <span><?= sanitize($u['name']) ?></span>
                     </div>
                   </td>
-                  <td><small><?= e($u['email']) ?></small></td>
+                  <td><small><?= sanitize($u['email']) ?></small></td>
                   <td>
                     <span class="badge <?=
                       $u['role'] === 'admin'   ? 'badge-danger' :
                       ($u['role'] === 'doctor' ? 'badge-info'   : 'badge-success')
                     ?>">
-                      <?= e(ucfirst($u['role'])) ?>
+                      <?= sanitize(ucfirst($u['role'])) ?>
                     </span>
                   </td>
-                  <td><small><?= e($u['phone'] ?? '—') ?></small></td>
+                  <td><small><?= sanitize($u['phone'] ?? '—') ?></small></td>
                   <td>
                     <?php if ((int) $u['is_active']): ?>
                       <span class="badge badge-success"><i class="fas fa-check mr-1"></i>Active</span>
@@ -114,7 +114,7 @@ require_once __DIR__ . '/../partials/sidebar.php';
                       <span class="badge badge-danger"><i class="fas fa-ban mr-1"></i>Suspended</span>
                     <?php endif; ?>
                   </td>
-                  <td><small><?= e(formatDate($u['created_at'])) ?></small></td>
+                  <td><small><?= sanitize(formatDate($u['created_at'])) ?></small></td>
                   <td>
                     <a href="index.php?page=users&action=edit&id=<?= (int) $u['id'] ?>"
                        class="btn btn-xs btn-outline-primary mr-1" title="Edit">

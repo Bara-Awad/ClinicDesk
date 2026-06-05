@@ -1,6 +1,6 @@
 <?php
 /**
- * ClinicDesk - CSRF Protection
+ * ClinicDesk - CSRF Protection (Cross Site Request Forgery)
  *
  * Every POST form must include a hidden CSRF token.
  * Every POST handler must validate it before processing data.

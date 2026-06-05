@@ -53,18 +53,18 @@ require_once __DIR__ . '/../partials/sidebar.php';
                 <?php foreach ($prescList as $p): ?>
                 <tr>
                   <td>
-                    <strong>Dr. <?= e($p['doctor_name']) ?></strong>
+                    <strong>Dr. <?= sanitize($p['doctor_name']) ?></strong>
                   </td>
-                  <td><small class="text-muted"><?= e($p['specialization_name']) ?></small></td>
-                  <td><?= e(formatDate($p['appt_date'])) ?></td>
+                  <td><small class="text-muted"><?= sanitize($p['specialization_name']) ?></small></td>
+                  <td><?= sanitize(formatDate($p['appt_date'])) ?></td>
                   <td>
-                    <span data-toggle="tooltip" title="<?= e($p['diagnosis']) ?>">
-                      <?= e(truncate($p['diagnosis'], 40)) ?>
+                    <span data-toggle="tooltip" title="<?= sanitize($p['diagnosis']) ?>">
+                      <?= sanitize(truncate($p['diagnosis'], 40)) ?>
                     </span>
                   </td>
                   <td>
-                    <span data-toggle="tooltip" title="<?= e($p['medications']) ?>">
-                      <?= e(truncate($p['medications'], 40)) ?>
+                    <span data-toggle="tooltip" title="<?= sanitize($p['medications']) ?>">
+                      <?= sanitize(truncate($p['medications'], 40)) ?>
                     </span>
                   </td>
                   <td>

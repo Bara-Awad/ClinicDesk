@@ -44,14 +44,14 @@ require_once __DIR__ . '/../partials/sidebar.php';
                     <div class="form-group">
                       <label>Full Name <span class="text-danger">*</span></label>
                       <input type="text" name="name" class="form-control"
-                             value="<?= e($_POST['name'] ?? '') ?>" required minlength="2">
+                             value="<?= sanitize($_POST['name'] ?? '') ?>" required minlength="2">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Email Address <span class="text-danger">*</span></label>
                       <input type="email" name="email" class="form-control"
-                             value="<?= e($_POST['email'] ?? '') ?>" required>
+                             value="<?= sanitize($_POST['email'] ?? '') ?>" required>
                     </div>
                   </div>
                 </div>
@@ -68,7 +68,7 @@ require_once __DIR__ . '/../partials/sidebar.php';
                     <div class="form-group">
                       <label>Phone</label>
                       <input type="text" name="phone" class="form-control"
-                             value="<?= e($_POST['phone'] ?? '') ?>">
+                             value="<?= sanitize($_POST['phone'] ?? '') ?>">
                     </div>
                   </div>
                 </div>
@@ -94,7 +94,7 @@ require_once __DIR__ . '/../partials/sidebar.php';
                         <select name="specialization_id" class="form-control">
                           <option value="">Select…</option>
                           <?php foreach ($specializations as $s): ?>
-                            <option value="<?= (int)$s['id'] ?>"><?= e($s['name']) ?></option>
+                            <option value="<?= (int)$s['id'] ?>"><?= sanitize($s['name']) ?></option>
                           <?php endforeach; ?>
                         </select>
                       </div>
@@ -125,7 +125,7 @@ require_once __DIR__ . '/../partials/sidebar.php';
                   <div class="form-group">
                     <label>Bio</label>
                     <textarea name="bio" class="form-control" rows="3"
-                              placeholder="Short biography…"><?= e($_POST['bio'] ?? '') ?></textarea>
+                              placeholder="Short biography…"><?= sanitize($_POST['bio'] ?? '') ?></textarea>
                   </div>
                 </div>
 

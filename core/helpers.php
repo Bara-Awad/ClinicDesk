@@ -17,21 +17,11 @@ function redirect(string $url): never
 /**
  * Sanitizes a string for safe output in HTML لمنع هجمات XSS
  * Always use this when echoing user-supplied data.
- *
- * @param mixed $value
- * @return string
  */
-function e(mixed $value): string
-{
-    return htmlspecialchars((string) $value, ENT_QUOTES, 'UTF-8');
-}
 
-/**
- * Alias of e() — sanitize for HTML output.
- */
 function sanitize(mixed $value): string
 {
-    return e($value);
+    return htmlspecialchars((string) $value, ENT_QUOTES, 'UTF-8');
 }
 
 /**

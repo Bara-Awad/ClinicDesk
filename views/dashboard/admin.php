@@ -116,7 +116,7 @@ $chartRows = $stats['chart_data'];
               <ul class="list-group list-group-flush">
                 <?php foreach (['pending','confirmed','completed','cancelled'] as $s): ?>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                  <span class="text-capitalize"><?= e($s) ?></span>
+                  <span class="text-capitalize"><?= sanitize($s) ?></span>
                   <span class="badge <?= statusBadge($s) ?> badge-pill">
                     <?= (int) ($stats['week_by_status'][$s] ?? 0) ?>
                   </span>
@@ -163,16 +163,16 @@ $chartRows = $stats['chart_data'];
                   <?php else: ?>
                     <?php foreach ($stats['recent'] as $a): ?>
                     <tr>
-                      <td><?= e($a['patient_name']) ?></td>
-                      <td><?= e($a['doctor_name']) ?></td>
-                      <td><small class="text-muted"><?= e($a['specialization_name']) ?></small></td>
+                      <td><?= sanitize($a['patient_name']) ?></td>
+                      <td><?= sanitize($a['doctor_name']) ?></td>
+                      <td><small class="text-muted"><?= sanitize($a['specialization_name']) ?></small></td>
                       <td>
-                        <?= e(formatDate($a['appt_date'])) ?>
-                        <small class="text-muted d-block"><?= e(formatTime($a['appt_time'])) ?></small>
+                        <?= sanitize(formatDate($a['appt_date'])) ?>
+                        <small class="text-muted d-block"><?= sanitize(formatTime($a['appt_time'])) ?></small>
                       </td>
                       <td>
                         <span class="badge <?= statusBadge($a['status']) ?>">
-                          <?= e(ucfirst($a['status'])) ?>
+                          <?= sanitize(ucfirst($a['status'])) ?>
                         </span>
                       </td>
                       <td>

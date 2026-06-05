@@ -51,14 +51,14 @@ require_once __DIR__ . '/../partials/sidebar.php';
                 <?php foreach ($doctorsList as $d): ?>
                 <tr>
                   <td>
-                    <strong>Dr. <?= e($d['name']) ?></strong>
-                    <small class="text-muted d-block"><?= e($d['email']) ?></small>
+                    <strong>Dr. <?= sanitize($d['name']) ?></strong>
+                    <small class="text-muted d-block"><?= sanitize($d['email']) ?></small>
                   </td>
-                  <td><?= e($d['specialization_name']) ?></td>
+                  <td><?= sanitize($d['specialization_name']) ?></td>
                   <td>$<?= number_format((float)$d['consultation_fee'], 2) ?></td>
                   <td>
                     <?php foreach (explode(',', $d['available_days']) as $day): ?>
-                      <span class="badge badge-secondary mr-1"><?= e(trim($day)) ?></span>
+                      <span class="badge badge-secondary mr-1"><?= sanitize(trim($day)) ?></span>
                     <?php endforeach; ?>
                   </td>
                   <td>

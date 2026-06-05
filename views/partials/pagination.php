@@ -12,7 +12,7 @@ if (!isset($paginator) || $paginator->totalPages() <= 1) return;
 
     <!-- Previous -->
     <li class="page-item <?= !$paginator->hasPrev() ? 'disabled' : '' ?>">
-      <a class="page-link" href="<?= e(buildQueryString(['page_num' => $paginator->prevPage()])) ?>">
+      <a class="page-link" href="<?= sanitize(buildQueryString(['page_num' => $paginator->prevPage()])) ?>">
         <i class="fas fa-chevron-left"></i>
       </a>
     </li>
@@ -33,7 +33,7 @@ if (!isset($paginator) || $paginator->totalPages() <= 1) return;
       <?php endif; ?>
 
       <li class="page-item <?= $p === $paginator->currentPage() ? 'active' : '' ?>">
-        <a class="page-link" href="<?= e(buildQueryString(['page_num' => $p])) ?>">
+        <a class="page-link" href="<?= sanitize(buildQueryString(['page_num' => $p])) ?>">
           <?= $p ?>
         </a>
       </li>
@@ -41,7 +41,7 @@ if (!isset($paginator) || $paginator->totalPages() <= 1) return;
 
     <!-- Next -->
     <li class="page-item <?= !$paginator->hasNext() ? 'disabled' : '' ?>">
-      <a class="page-link" href="<?= e(buildQueryString(['page_num' => $paginator->nextPage()])) ?>">
+      <a class="page-link" href="<?= sanitize(buildQueryString(['page_num' => $paginator->nextPage()])) ?>">
         <i class="fas fa-chevron-right"></i>
       </a>
     </li>

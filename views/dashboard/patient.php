@@ -39,10 +39,10 @@ $nextAppt = $stats['upcoming'][0] ?? null;
             <i class="fas fa-calendar-check fa-2x mr-3"></i>
             <div>
               <strong>Next Appointment:</strong>
-              Dr. <?= e($nextAppt['doctor_name']) ?> (<?= e($nextAppt['specialization_name']) ?>)
-              &mdash; <?= e(formatDate($nextAppt['appt_date'])) ?> at <?= e(formatTime($nextAppt['appt_time'])) ?>
+              Dr. <?= sanitize($nextAppt['doctor_name']) ?> (<?= sanitize($nextAppt['specialization_name']) ?>)
+              &mdash; <?= sanitize(formatDate($nextAppt['appt_date'])) ?> at <?= sanitize(formatTime($nextAppt['appt_time'])) ?>
               <span class="badge <?= statusBadge($nextAppt['status']) ?> ml-2">
-                <?= e(ucfirst($nextAppt['status'])) ?>
+                <?= sanitize(ucfirst($nextAppt['status'])) ?>
               </span>
             </div>
             <a href="index.php?page=appointments&action=show&id=<?= (int)$nextAppt['id'] ?>"
@@ -121,12 +121,12 @@ $nextAppt = $stats['upcoming'][0] ?? null;
                     <?php foreach ($stats['upcoming'] as $a): ?>
                     <tr>
                       <td>
-                        <strong>Dr. <?= e($a['doctor_name']) ?></strong>
-                        <small class="text-muted d-block"><?= e($a['specialization_name']) ?></small>
+                        <strong>Dr. <?= sanitize($a['doctor_name']) ?></strong>
+                        <small class="text-muted d-block"><?= sanitize($a['specialization_name']) ?></small>
                       </td>
-                      <td><?= e(formatDate($a['appt_date'])) ?></td>
-                      <td><?= e(formatTime($a['appt_time'])) ?></td>
-                      <td><span class="badge <?= statusBadge($a['status']) ?>"><?= ucfirst(e($a['status'])) ?></span></td>
+                      <td><?= sanitize(formatDate($a['appt_date'])) ?></td>
+                      <td><?= sanitize(formatTime($a['appt_time'])) ?></td>
+                      <td><span class="badge <?= statusBadge($a['status']) ?>"><?= ucfirst(sanitize($a['status'])) ?></span></td>
                     </tr>
                     <?php endforeach; ?>
                   </tbody>
@@ -151,9 +151,9 @@ $nextAppt = $stats['upcoming'][0] ?? null;
                   <li class="list-group-item">
                     <div class="d-flex justify-content-between">
                       <div>
-                        <strong class="small">Dr. <?= e($p['doctor_name']) ?></strong>
-                        <div class="text-muted small"><?= e(formatDate($p['appt_date'])) ?></div>
-                        <div class="text-muted small"><?= e(truncate($p['diagnosis'], 40)) ?></div>
+                        <strong class="small">Dr. <?= sanitize($p['doctor_name']) ?></strong>
+                        <div class="text-muted small"><?= sanitize(formatDate($p['appt_date'])) ?></div>
+                        <div class="text-muted small"><?= sanitize(truncate($p['diagnosis'], 40)) ?></div>
                       </div>
                       <?php if ($p['file_path']): ?>
                       <a href="index.php?page=prescriptions&action=download&id=<?= (int)$p['id'] ?>"

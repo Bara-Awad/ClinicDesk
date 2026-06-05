@@ -15,7 +15,7 @@ $availDays = array_map('trim', explode(',', $doctor['available_days'] ?? ''));
   <div class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
-        <div class="col-sm-6"><h1 class="m-0">Edit Doctor: Dr. <?= e($doctor['name']) ?></h1></div>
+        <div class="col-sm-6"><h1 class="m-0">Edit Doctor: Dr. <?= sanitize($doctor['name']) ?></h1></div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="index.php?page=doctors">Doctors</a></li>
@@ -46,7 +46,7 @@ $availDays = array_map('trim', explode(',', $doctor['available_days'] ?? ''));
                 <div class="form-group text-center mb-4">
                   <div class="mb-2">
                     <?php if (!empty($doctor['avatar']) && file_exists($doctor['avatar'])): ?>
-                      <img src="<?= BASE_URL ?>/<?= e($doctor['avatar']) ?>"
+                      <img src="<?= BASE_URL ?>/<?= sanitize($doctor['avatar']) ?>"
                            class="img-thumbnail rounded-circle"
                            style="width:100px;height:100px;object-fit:cover">
                     <?php else: ?>
@@ -73,7 +73,7 @@ $availDays = array_map('trim', explode(',', $doctor['available_days'] ?? ''));
                         <?php foreach ($specializations as $s): ?>
                           <option value="<?= (int)$s['id'] ?>"
                             <?= (int)$s['id'] === (int)$doctor['specialization_id'] ? 'selected' : '' ?>>
-                            <?= e($s['name']) ?>
+                            <?= sanitize($s['name']) ?>
                           </option>
                         <?php endforeach; ?>
                       </select>
@@ -83,7 +83,7 @@ $availDays = array_map('trim', explode(',', $doctor['available_days'] ?? ''));
                     <div class="form-group">
                       <label>Consultation Fee ($)</label>
                       <input type="number" name="consultation_fee" class="form-control"
-                             step="0.01" min="0" value="<?= e($doctor['consultation_fee']) ?>">
+                             step="0.01" min="0" value="<?= sanitize($doctor['consultation_fee']) ?>">
                     </div>
                   </div>
                 </div>
@@ -105,7 +105,7 @@ $availDays = array_map('trim', explode(',', $doctor['available_days'] ?? ''));
                 <div class="form-group">
                   <label>Bio</label>
                   <textarea name="bio" class="form-control" rows="4"
-                            placeholder="Professional biography…"><?= e($doctor['bio'] ?? '') ?></textarea>
+                            placeholder="Professional biography…"><?= sanitize($doctor['bio'] ?? '') ?></textarea>
                 </div>
 
               </div>

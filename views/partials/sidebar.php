@@ -30,7 +30,7 @@ function sidebarActive(string $page, string $action = ''): string {
         <div class="img-circle bg-white text-center d-flex align-items-center justify-content-center"
              style="width:35px;height:35px;border-radius:50%;overflow:hidden">
           <?php if (!empty($currentUser['avatar']) && file_exists($currentUser['avatar'])): ?>
-            <img src="<?= BASE_URL ?>/<?= e($currentUser['avatar']) ?>" alt="Avatar"
+            <img src="<?= BASE_URL ?>/<?= sanitize($currentUser['avatar']) ?>" alt="Avatar"
                  style="width:100%;height:100%;object-fit:cover">
           <?php else: ?>
             <i class="fas fa-user text-primary"></i>
@@ -39,9 +39,9 @@ function sidebarActive(string $page, string $action = ''): string {
       </div>
       <div class="info">
         <a href="index.php?page=profile" class="d-block text-white font-weight-bold">
-          <?= e($currentUser['name']) ?>
+          <?= sanitize($currentUser['name']) ?>
         </a>
-        <small class="text-muted text-capitalize"><?= e($role) ?></small>
+        <small class="text-muted text-capitalize"><?= sanitize($role) ?></small>
       </div>
     </div>
 

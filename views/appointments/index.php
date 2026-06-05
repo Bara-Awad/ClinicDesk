@@ -58,24 +58,24 @@ $role = \Auth::role();
                 <option value="">All Doctors</option>
                 <?php foreach ($doctorsList as $d): ?>
                   <option value="<?= (int)$d['id'] ?>" <?= (int)($_GET['doctor_id'] ?? 0) === (int)$d['id'] ? 'selected' : '' ?>>
-                    Dr. <?= e($d['name']) ?>
+                    Dr. <?= sanitize($d['name']) ?>
                   </option>
                 <?php endforeach; ?>
               </select>
             </div>
             <div class="form-group mr-2 mb-2">
               <input type="text" name="patient_name" class="form-control form-control-sm"
-                     placeholder="Patient name…" value="<?= e($_GET['patient_name'] ?? '') ?>">
+                     placeholder="Patient name…" value="<?= sanitize($_GET['patient_name'] ?? '') ?>">
             </div>
             <?php endif; ?>
 
             <div class="form-group mr-2 mb-2">
               <input type="date" name="start_date" class="form-control form-control-sm"
-                     value="<?= e($_GET['start_date'] ?? '') ?>">
+                     value="<?= sanitize($_GET['start_date'] ?? '') ?>">
             </div>
             <div class="form-group mr-2 mb-2">
               <input type="date" name="end_date" class="form-control form-control-sm"
-                     value="<?= e($_GET['end_date'] ?? '') ?>">
+                     value="<?= sanitize($_GET['end_date'] ?? '') ?>">
             </div>
 
             <button type="submit" class="btn btn-sm btn-primary mr-2 mb-2">
@@ -122,20 +122,20 @@ $role = \Auth::role();
                 <?php foreach ($apptList as $a): ?>
                 <tr>
                   <?php if ($role !== 'patient'): ?>
-                    <td><?= e($a['patient_name']) ?></td>
+                    <td><?= sanitize($a['patient_name']) ?></td>
                   <?php endif; ?>
                   <?php if ($role !== 'doctor'): ?>
-                    <td>Dr. <?= e($a['doctor_name']) ?></td>
+                    <td>Dr. <?= sanitize($a['doctor_name']) ?></td>
                   <?php endif; ?>
-                  <td><small class="text-muted"><?= e($a['specialization_name']) ?></small></td>
-                  <td><?= e(formatDate($a['appt_date'])) ?></td>
-                  <td><?= e(formatTime($a['appt_time'])) ?></td>
+                  <td><small class="text-muted"><?= sanitize($a['specialization_name']) ?></small></td>
+                  <td><?= sanitize(formatDate($a['appt_date'])) ?></td>
+                  <td><?= sanitize(formatTime($a['appt_time'])) ?></td>
                   <td>
                     <span class="badge <?= statusBadge($a['status']) ?>">
-                      <?= e(ucfirst($a['status'])) ?>
+                      <?= sanitize(ucfirst($a['status'])) ?>
                     </span>
                   </td>
-                  <td><small><?= e(truncate($a['reason'] ?? '—', 40)) ?></small></td>
+                  <td><small><?= sanitize(truncate($a['reason'] ?? '—', 40)) ?></small></td>
                   <td>
                     <a href="index.php?page=appointments&action=show&id=<?= (int)$a['id'] ?>"
                        class="btn btn-xs btn-outline-primary" title="View">

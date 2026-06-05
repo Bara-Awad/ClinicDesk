@@ -68,7 +68,7 @@
                 </div>
                 <input type="email" name="email" id="email"
                        class="form-control" placeholder="admin@clinic.local"
-                       value="<?= e($_POST['email'] ?? '') ?>" required autofocus>
+                       value="<?= sanitize($_POST['email'] ?? '') ?>" required autofocus>
               </div>
             </div>
 

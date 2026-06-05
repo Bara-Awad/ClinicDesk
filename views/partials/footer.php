@@ -2,7 +2,7 @@
 
     <!-- Footer -->
     <footer class="main-footer">
-      <strong>© <?= date('Y') ?> <a href="#"><?= e(APP_NAME) ?></a></strong>
+      <strong>© <?= date('Y') ?> <a href="#"><?= sanitize(APP_NAME) ?></a></strong>
       &mdash; Clinic Management Dashboard
       <div class="float-right d-none d-sm-inline-block">
         <b>Version</b> <?= APP_VERSION ?>

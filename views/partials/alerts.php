@@ -27,7 +27,7 @@ unset($_SESSION['flash']);
 
 <div class="alert <?= $alertClass ?> alert-dismissible fade show mx-3 mt-2" role="alert">
   <i class="<?= $iconClass ?> mr-2"></i>
-  <?= e($message) ?>
+  <?= sanitize($message) ?>
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>

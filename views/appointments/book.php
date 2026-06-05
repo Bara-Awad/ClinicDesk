@@ -45,11 +45,11 @@ require_once __DIR__ . '/../partials/sidebar.php';
                     <option value="">— Choose a doctor —</option>
                     <?php foreach ($doctorsList as $d): ?>
                       <option value="<?= (int)$d['id'] ?>"
-                              data-days="<?= e($d['available_days']) ?>"
-                              data-fee="<?= e($d['consultation_fee']) ?>"
-                              data-spec="<?= e($d['specialization_name']) ?>"
+                              data-days="<?= sanitize($d['available_days']) ?>"
+                              data-fee="<?= sanitize($d['consultation_fee']) ?>"
+                              data-spec="<?= sanitize($d['specialization_name']) ?>"
                               <?= (int)($_POST['doctor_id'] ?? 0) === (int)$d['id'] ? 'selected' : '' ?>>
-                        Dr. <?= e($d['name']) ?> — <?= e($d['specialization_name']) ?>
+                        Dr. <?= sanitize($d['name']) ?> — <?= sanitize($d['specialization_name']) ?>
                       </option>
                     <?php endforeach; ?>
                   </select>
@@ -68,7 +68,7 @@ require_once __DIR__ . '/../partials/sidebar.php';
                   <label>Preferred Date <span class="text-danger">*</span></label>
                   <input type="date" name="appt_date" id="apptDate" class="form-control"
                          min="<?= date('Y-m-d') ?>"
-                         value="<?= e($_POST['appt_date'] ?? '') ?>" required>
+                         value="<?= sanitize($_POST['appt_date'] ?? '') ?>" required>
                   <small id="dayWarning" class="text-danger d-none">
                     ⚠ The doctor is not available on this day.
                   </small>
@@ -91,7 +91,7 @@ require_once __DIR__ . '/../partials/sidebar.php';
                 <div class="form-group">
                   <label>Reason for Visit</label>
                   <textarea name="reason" class="form-control" rows="3"
-                            placeholder="Brief description of your concern…"><?= e($_POST['reason'] ?? '') ?></textarea>
+                            placeholder="Brief description of your concern…"><?= sanitize($_POST['reason'] ?? '') ?></textarea>
                 </div>
 
               </div>

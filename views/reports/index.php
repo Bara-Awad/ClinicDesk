@@ -38,7 +38,7 @@ require_once __DIR__ . '/../partials/sidebar.php';
           <div class="card-body">
             <?php if (!empty($errors)): ?>
               <div class="alert alert-danger">
-                <?php foreach ($errors as $e): ?><div><?= e($e) ?></div><?php endforeach; ?>
+                <?php foreach ($errors as $e): ?><div><?= sanitize($e) ?></div><?php endforeach; ?>
               </div>
             <?php endif; ?>
             <div class="row">
@@ -46,14 +46,14 @@ require_once __DIR__ . '/../partials/sidebar.php';
                 <div class="form-group">
                   <label>Start Date <span class="text-danger">*</span></label>
                   <input type="date" name="start_date" class="form-control"
-                         value="<?= e($_GET['start_date'] ?? '') ?>" required>
+                         value="<?= sanitize($_GET['start_date'] ?? '') ?>" required>
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="form-group">
                   <label>End Date <span class="text-danger">*</span></label>
                   <input type="date" name="end_date" class="form-control"
-                         value="<?= e($_GET['end_date'] ?? '') ?>" required>
+                         value="<?= sanitize($_GET['end_date'] ?? '') ?>" required>
                 </div>
               </div>
               <div class="col-md-3">
@@ -64,7 +64,7 @@ require_once __DIR__ . '/../partials/sidebar.php';
                     <?php foreach ($doctorsList as $d): ?>
                       <option value="<?= (int)$d['id'] ?>"
                         <?= (int)($_GET['doctor_id'] ?? 0) === (int)$d['id'] ? 'selected' : '' ?>>
-                        Dr. <?= e($d['name']) ?>
+                        Dr. <?= sanitize($d['name']) ?>
                       </option>
                     <?php endforeach; ?>
                   </select>
@@ -94,7 +94,7 @@ require_once __DIR__ . '/../partials/sidebar.php';
                 $csvParams = array_merge($_GET, ['export' => 'csv']);
                 $csvUrl = 'index.php?' . http_build_query($csvParams);
               ?>
-              <a href="<?= e($csvUrl) ?>" class="btn btn-success ml-2">
+              <a href="<?= sanitize($csvUrl) ?>" class="btn btn-success ml-2">
                 <i class="fas fa-file-csv mr-1"></i> Export CSV
               </a>
             <?php endif; ?>
@@ -126,17 +126,17 @@ require_once __DIR__ . '/../partials/sidebar.php';
                 <?php foreach ($results as $r): ?>
                 <tr>
                   <td><?= (int)$r['id'] ?></td>
-                  <td><?= e($r['patient_name']) ?></td>
-                  <td>Dr. <?= e($r['doctor_name']) ?></td>
-                  <td><small><?= e($r['specialization_name']) ?></small></td>
-                  <td><?= e(formatDate($r['appt_date'])) ?></td>
-                  <td><?= e(formatTime($r['appt_time'])) ?></td>
+                  <td><?= sanitize($r['patient_name']) ?></td>
+                  <td>Dr. <?= sanitize($r['doctor_name']) ?></td>
+                  <td><small><?= sanitize($r['specialization_name']) ?></small></td>
+                  <td><?= sanitize(formatDate($r['appt_date'])) ?></td>
+                  <td><?= sanitize(formatTime($r['appt_time'])) ?></td>
                   <td>
                     <span class="badge <?= statusBadge($r['status']) ?>">
-                      <?= e(ucfirst($r['status'])) ?>
+                      <?= sanitize(ucfirst($r['status'])) ?>
                     </span>
                   </td>
-                  <td><small><?= e(truncate($r['reason'] ?? '—', 40)) ?></small></td>
+                  <td><small><?= sanitize(truncate($r['reason'] ?? '—', 40)) ?></small></td>
                 </tr>
                 <?php endforeach; ?>
               </tbody>

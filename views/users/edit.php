@@ -13,7 +13,7 @@ require_once __DIR__ . '/../partials/sidebar.php';
   <div class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
-        <div class="col-sm-6"><h1 class="m-0">Edit User: <?= e($targetUser['name']) ?></h1></div>
+        <div class="col-sm-6"><h1 class="m-0">Edit User: <?= sanitize($targetUser['name']) ?></h1></div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="index.php?page=users">Users</a></li>
@@ -40,7 +40,7 @@ require_once __DIR__ . '/../partials/sidebar.php';
                   $targetUser['role'] === 'admin'   ? 'badge-danger' :
                   ($targetUser['role'] === 'doctor' ? 'badge-info'   : 'badge-success')
                 ?> p-2">
-                  <?= e(ucfirst($targetUser['role'])) ?>
+                  <?= sanitize(ucfirst($targetUser['role'])) ?>
                 </span>
               </div>
             </div>
@@ -54,14 +54,14 @@ require_once __DIR__ . '/../partials/sidebar.php';
                     <div class="form-group">
                       <label>Full Name <span class="text-danger">*</span></label>
                       <input type="text" name="name" class="form-control"
-                             value="<?= e($targetUser['name']) ?>" required>
+                             value="<?= sanitize($targetUser['name']) ?>" required>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Email Address</label>
                       <input type="email" class="form-control"
-                             value="<?= e($targetUser['email']) ?>" disabled>
+                             value="<?= sanitize($targetUser['email']) ?>" disabled>
                       <small class="text-muted">Email cannot be changed.</small>
                     </div>
                   </div>
@@ -70,7 +70,7 @@ require_once __DIR__ . '/../partials/sidebar.php';
                 <div class="form-group">
                   <label>Phone</label>
                   <input type="text" name="phone" class="form-control"
-                         value="<?= e($targetUser['phone'] ?? '') ?>">
+                         value="<?= sanitize($targetUser['phone'] ?? '') ?>">
                 </div>
 
                 <div class="form-group">
@@ -84,7 +84,7 @@ require_once __DIR__ . '/../partials/sidebar.php';
                   </div>
                   <?php if (!empty($targetUser['avatar']) && file_exists($targetUser['avatar'])): ?>
                     <div class="mt-2">
-                      <img src="<?= BASE_URL ?>/<?= e($targetUser['avatar']) ?>"
+                      <img src="<?= BASE_URL ?>/<?= sanitize($targetUser['avatar']) ?>"
                            alt="Current avatar" class="img-thumbnail" style="max-height:80px">
                     </div>
                   <?php endif; ?>
@@ -102,7 +102,7 @@ require_once __DIR__ . '/../partials/sidebar.php';
                         <?php foreach ($specializations as $s): ?>
                           <option value="<?= (int)$s['id'] ?>"
                             <?= (int)$s['id'] === (int)$doctorRecord['specialization_id'] ? 'selected' : '' ?>>
-                            <?= e($s['name']) ?>
+                            <?= sanitize($s['name']) ?>
                           </option>
                         <?php endforeach; ?>
                       </select>
@@ -112,7 +112,7 @@ require_once __DIR__ . '/../partials/sidebar.php';
                     <div class="form-group">
                       <label>Consultation Fee ($)</label>
                       <input type="number" name="consultation_fee" class="form-control"
-                             step="0.01" min="0" value="<?= e($doctorRecord['consultation_fee']) ?>">
+                             step="0.01" min="0" value="<?= sanitize($doctorRecord['consultation_fee']) ?>">
                     </div>
                   </div>
                 </div>
@@ -136,7 +136,7 @@ require_once __DIR__ . '/../partials/sidebar.php';
 
                 <div class="form-group">
                   <label>Bio</label>
-                  <textarea name="bio" class="form-control" rows="3"><?= e($doctorRecord['bio'] ?? '') ?></textarea>
+                  <textarea name="bio" class="form-control" rows="3"><?= sanitize($doctorRecord['bio'] ?? '') ?></textarea>
                 </div>
                 <?php endif; ?>
 

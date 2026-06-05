@@ -38,7 +38,7 @@ $role = \Auth::role();
               <h3 class="card-title"><i class="fas fa-calendar-alt mr-2"></i>Appointment Details</h3>
               <div class="card-tools">
                 <span class="badge badge-lg <?= statusBadge($appointment['status']) ?> p-2">
-                  <?= e(ucfirst($appointment['status'])) ?>
+                  <?= sanitize(ucfirst($appointment['status'])) ?>
                 </span>
               </div>
             </div>
@@ -48,23 +48,23 @@ $role = \Auth::role();
                   <table class="table table-borderless table-sm">
                     <tr>
                       <th class="text-muted">Patient</th>
-                      <td><?= e($appointment['patient_name']) ?></td>
+                      <td><?= sanitize($appointment['patient_name']) ?></td>
                     </tr>
                     <tr>
                       <th class="text-muted">Doctor</th>
-                      <td>Dr. <?= e($appointment['doctor_name']) ?></td>
+                      <td>Dr. <?= sanitize($appointment['doctor_name']) ?></td>
                     </tr>
                     <tr>
                       <th class="text-muted">Specialization</th>
-                      <td><?= e($appointment['specialization_name']) ?></td>
+                      <td><?= sanitize($appointment['specialization_name']) ?></td>
                     </tr>
                     <tr>
                       <th class="text-muted">Date</th>
-                      <td><?= e(formatDate($appointment['appt_date'])) ?></td>
+                      <td><?= sanitize(formatDate($appointment['appt_date'])) ?></td>
                     </tr>
                     <tr>
                       <th class="text-muted">Time</th>
-                      <td><?= e(formatTime($appointment['appt_time'])) ?></td>
+                      <td><?= sanitize(formatTime($appointment['appt_time'])) ?></td>
                     </tr>
                     <tr>
                       <th class="text-muted">Fee</th>
@@ -75,12 +75,12 @@ $role = \Auth::role();
                 <div class="col-md-6">
                   <div class="form-group">
                     <label class="text-muted font-weight-bold">Reason for Visit</label>
-                    <p><?= e($appointment['reason'] ?? '—') ?></p>
+                    <p><?= sanitize($appointment['reason'] ?? '—') ?></p>
                   </div>
                   <?php if ($appointment['doctor_notes']): ?>
                   <div class="form-group">
                     <label class="text-muted font-weight-bold">Doctor Notes</label>
-                    <p><?= e($appointment['doctor_notes']) ?></p>
+                    <p><?= sanitize($appointment['doctor_notes']) ?></p>
                   </div>
                   <?php endif; ?>
                 </div>
@@ -98,17 +98,17 @@ $role = \Auth::role();
               <div class="row">
                 <div class="col-md-6">
                   <label class="text-muted font-weight-bold">Diagnosis</label>
-                  <p><?= e($prescription['diagnosis']) ?></p>
+                  <p><?= sanitize($prescription['diagnosis']) ?></p>
                 </div>
                 <div class="col-md-6">
                   <label class="text-muted font-weight-bold">Medications</label>
-                  <p><?= e($prescription['medications']) ?></p>
+                  <p><?= sanitize($prescription['medications']) ?></p>
                 </div>
               </div>
               <?php if ($prescription['notes']): ?>
               <div>
                 <label class="text-muted font-weight-bold">Notes</label>
-                <p><?= e($prescription['notes']) ?></p>
+                <p><?= sanitize($prescription['notes']) ?></p>
               </div>
               <?php endif; ?>
               <?php if ($prescription['file_path']): ?>
@@ -147,7 +147,7 @@ $role = \Auth::role();
                 <div class="form-group">
                   <label>Doctor Notes</label>
                   <textarea name="doctor_notes" class="form-control" rows="3"
-                            placeholder="Optional notes…"><?= e($appointment['doctor_notes'] ?? '') ?></textarea>
+                            placeholder="Optional notes…"><?= sanitize($appointment['doctor_notes'] ?? '') ?></textarea>
                 </div>
               </div>
               <div class="card-footer text-right">
